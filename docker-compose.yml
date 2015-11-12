@@ -1,0 +1,19 @@
+teamcity-db:
+    image: postgres
+    environment:
+        - POSTGRES_USER=teamcity
+        - POSTGRES_PASSWORD=supersecure
+
+teamcity-server:
+    build: docker-alpine-teamcity-server
+    links:
+        - teamcity-db:teamcity-db
+    ports:
+        - 8111:8111
+
+teamcity-agent:
+    build: docker-alpine-teamcity-agent
+    environment:
+        - TEAMCITY_SERVER=http://localhost:8111
+    ports:
+        - 9090:9090

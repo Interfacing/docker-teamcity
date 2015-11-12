@@ -1,0 +1,22 @@
+#!/usr/bin/env sh
+
+if [ -z "$TEAMCITY_SERVER" ]; then
+    echo "Fatal error: TEAMCITY_SERVER is not set."
+    echo "Launch this container with -e TEAMCITY_SERVER=http://<servername>:<port>"
+    exit
+fi
+
+if [ ! -d "bin" ]; then
+    echo "Setting up TeamCity agent for the first time in $(pwd)"
+    wget $TEAMCITY_SERVER/update/buildAgent.zip
+    unzip -q buildAgent.zip
+    rm buildAgent.zip
+
+    cp conf/buildAgent.dist.properties conf/buildAgent.properties
+    sed -i "s/serverUrl=.*/serverUrl=$(echo $TEAMCITY_SERVER | sed -e 's/[\/&]/\\&/g')/" conf/buildAgent.properties
+    chmod +x bin/agent.sh
+else
+    echo "Using agent at $(pwd)"
+fi
+
+bin/agent.sh run
