@@ -17,6 +17,8 @@ teamcity-agent:
 
 To launch the TeamCity docker application, simply use `docker-compose up -d`
 
+**After the first launch, the teamcity-agent docker will exit with an error since it cannot connect to the teamcity-server docker yet. Configure it and relaunch after**
+
 ## Configure TeamCity
 ### PostgreSQL JDBC driver
 
