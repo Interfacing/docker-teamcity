@@ -16,3 +16,17 @@ teamcity-agent:
 ## Run
 
 To launch the TeamCity docker application, simply use `docker-compose up -d`
+
+## Configure TeamCity
+### PostgreSQL JDBC driver
+
+Start a docker and attach volumes of teamcity-server docker:
+```
+docker run -it --rm --volumes-from <teamcity-server_1> alpine sh
+```
+
+Within the docker, download latest PostgreSQL JDBC driver:
+```
+apk --update add openssl
+wget https://jdbc.postgresql.org/download/postgresql-9.4-1205.jdbc41.jar
+```
