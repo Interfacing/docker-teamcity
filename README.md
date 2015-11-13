@@ -34,5 +34,5 @@ docker run -it --rm --volumes-from <teamcity-server_1> alpine sh
 Within the docker, download latest PostgreSQL JDBC driver:
 ```
 apk --update add openssl
-wget https://jdbc.postgresql.org/download/postgresql-9.4-1205.jdbc41.jar
+wget -P /var/lib/teamcity/lib/jdbc https://jdbc.postgresql.org/download/postgresql-9.4-1205.jdbc41.jar
 ```
