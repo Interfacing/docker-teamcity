@@ -3,6 +3,8 @@ teamcity-db:
     environment:
         - POSTGRES_USER=teamcity
         - POSTGRES_PASSWORD=supersecure
+    volumes:
+        - /volumes/postgres/data:/var/lib/postgres/data
 
 teamcity-server:
     build: docker-alpine-teamcity-server
@@ -10,6 +12,8 @@ teamcity-server:
         - teamcity-db:teamcity-db
     ports:
         - 8111:8111
+    volumes:
+        - /volumes/teamcity:/var/lib/teamcity
 
 teamcity-agent:
     build: docker-alpine-teamcity-agent
@@ -17,3 +21,12 @@ teamcity-agent:
         - TEAMCITY_SERVER=http://localhost:8111
     ports:
         - 9090:9090
+
+teamcity-agent-docker:
+    build: docker-debian-teamcity-agent
+    environment:
+        - TEAMCITY_SERVER=http://localhost:8111
+    ports:
+        - 9091:9090
+    volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
