@@ -11,6 +11,10 @@ For example:
 teamcity-agent:
     environment:
         - TEAMCITY_SERVER=http://192.168.0.100:8111
+
+teamcity-agent-docker:
+    environment:
+        - TEAMCITY_SERVER=http://192.168.0.100:8111
 ```
 
 ## Run
