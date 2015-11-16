@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-export TEAMCITY_SERVER="http://$TEAMCITY_SERVER_PORT_8111_TCP_ADDR:$TEAMCITY_SERVER_PORT_8111_TCP_PORT"
+export TEAMCITY_SERVER="http://teamcity-server:8111"
 
 if [ ! -d "bin" ]; then
     echo "Setting up TeamCity agent for the first time in $(pwd) with Teamcity Server $TEAMCITY_SERVER"
