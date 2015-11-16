@@ -1,13 +1,9 @@
 #!/usr/bin/env sh
 
-if [ -z "$TEAMCITY_SERVER" ]; then
-    echo "Fatal error: TEAMCITY_SERVER is not set."
-    echo "Launch this container with -e TEAMCITY_SERVER=http://<servername>:<port>"
-    exit
-fi
+export TEAMCITY_SERVER="http://$TEAMCITY_SERVER_PORT_8111_TCP_ADDR:$TEAMCITY_SERVER_PORT_8111_TCP_PORT"
 
 if [ ! -d "bin" ]; then
-    echo "Setting up TeamCity agent for the first time in $(pwd)"
+    echo "Setting up TeamCity agent for the first time in $(pwd) with Teamcity Server $TEAMCITY_SERVER"
     wget $TEAMCITY_SERVER/update/buildAgent.zip
     unzip -q buildAgent.zip
     rm buildAgent.zip

@@ -17,10 +17,8 @@ teamcity-server:
 
 teamcity-agent:
     build: docker-alpine-teamcity-agent
-    environment:
-        - TEAMCITY_SERVER=http://localhost:8111
     restart: on-failure
-    ports:
-        - 9090:9090
+    links:
+        - teamcity-server:teamcity-server
     volumes:
         - /var/run/docker.sock:/var/run/docker.sock
