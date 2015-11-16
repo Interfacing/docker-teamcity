@@ -21,12 +21,5 @@ teamcity-agent:
         - TEAMCITY_SERVER=http://localhost:8111
     ports:
         - 9090:9090
-
-teamcity-agent-docker:
-    build: docker-debian-teamcity-agent
-    environment:
-        - TEAMCITY_SERVER=http://localhost:8111
-    ports:
-        - 9091:9090
     volumes:
         - /var/run/docker.sock:/var/run/docker.sock
