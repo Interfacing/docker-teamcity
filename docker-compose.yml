@@ -19,6 +19,7 @@ teamcity-agent:
     build: docker-alpine-teamcity-agent
     environment:
         - TEAMCITY_SERVER=http://localhost:8111
+    restart: on-failure
     ports:
         - 9090:9090
     volumes:
