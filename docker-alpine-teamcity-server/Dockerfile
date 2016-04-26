@@ -10,7 +10,7 @@ ENV TEAMCITY_DATA_PATH /var/lib/teamcity
 VOLUME $TEAMCITY_DATA_PATH
 
 # Download and install TeamCity to /opt
-ENV TEAMCITY_VERSION 9.1.4
+ENV TEAMCITY_VERSION 9.1.6
 ENV TEAMCITY_DOWNLOAD http://download.jetbrains.com/teamcity
 
 RUN mkdir /opt && \
