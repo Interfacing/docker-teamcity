@@ -8,6 +8,7 @@ teamcity-db:
 
 teamcity-server:
     build: docker-alpine-teamcity-server
+    restart: always
     links:
         - teamcity-db:teamcity-db
     ports:
@@ -17,7 +18,7 @@ teamcity-server:
 
 teamcity-agent:
     build: docker-alpine-teamcity-agent
-    restart: on-failure
+    restart: always
     links:
         - teamcity-server:teamcity-server
     volumes:
