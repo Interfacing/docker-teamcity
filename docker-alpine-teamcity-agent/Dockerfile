@@ -5,11 +5,10 @@ MAINTAINER François Brulotte <francois.brulotte@gmail.com>
 ENV TEAMCITY_AGENT_DIR "/opt/agent"
 
 RUN echo "@community http://dl-4.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories && \
-    apk --update add docker@community && \
-    rm /var/cache/apk/*
+    apk --update --no-cache add docker@community
 
-RUN curl -L https://github.com/docker/compose/releases/download/1.7.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose && \
-    chmod +x /usr/local/bin/docker-compose
+RUN apk --no-cache add py-pip && \
+    pip install docker-compose
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
