@@ -1,4 +1,7 @@
-teamcity-db:
+version: '2'
+
+services:
+  teamcity-db:
     image: postgres
     environment:
         - POSTGRES_USER=teamcity
@@ -6,19 +9,17 @@ teamcity-db:
     volumes:
         - /volumes/postgresql/data:/var/lib/postgresql/data
 
-teamcity-server:
+  teamcity-server:
     build: docker-alpine-teamcity-server
-    links:
-        - teamcity-db:teamcity-db
     ports:
         - 8111:8111
     volumes:
         - /volumes/teamcity:/var/lib/teamcity
 
-teamcity-agent:
+  teamcity-agent:
     build: docker-alpine-teamcity-agent
     restart: on-failure
-    links:
-        - teamcity-server:teamcity-server
     volumes:
         - /var/run/docker.sock:/var/run/docker.sock
+        - ~/.aws:/root/.aws
+        - ~/.docker:/root/.docker
