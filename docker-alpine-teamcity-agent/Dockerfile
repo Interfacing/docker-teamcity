@@ -13,6 +13,7 @@ RUN apk add --no-cache --virtual .build-deps curl && \
     apk del .build-deps
 
 COPY docker-credential-ecr-login /usr/local/bin/docker-credential-ecr-login
+RUN chmod +x /usr/local/bin/docker-credential-ecr-login
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
