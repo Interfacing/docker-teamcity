@@ -2,7 +2,9 @@ FROM frolvlad/alpine-oraclejdk8:8.131.11-cleaned
 
 MAINTAINER François Brulotte <francois.brulotte@gmail.com>
 
-ENV TEAMCITY_AGENT_DIR "/opt/agent"
+ENV TEAMCITY_SERVER
+
+ENV TEAMCITY_AGENT_DIR /opt/agent
 
 RUN echo "@community http://dl-4.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories && \
     apk --update --no-cache add docker@community

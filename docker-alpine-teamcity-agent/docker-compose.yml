@@ -1,0 +1,13 @@
+version: '2'
+
+services:
+  teamcity-agent:
+    build: .
+    restart: on-failure
+    env_file: teamcity-agent.env
+    ports:
+      - 9090:9090
+    volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
+        - ~/.aws:/root/.aws
+        - ~/.docker:/root/.docker

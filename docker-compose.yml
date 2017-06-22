@@ -2,7 +2,7 @@ version: '2'
 
 services:
   teamcity-db:
-    image: postgres
+    image: postgres:9.4
     environment:
         - POSTGRES_USER=teamcity
         - POSTGRES_PASSWORD=supersecure
@@ -19,6 +19,8 @@ services:
   teamcity-agent:
     build: docker-alpine-teamcity-agent
     restart: on-failure
+    environment:
+        - TEAMCITY_SERVER=http://teamcity-server:8111
     volumes:
         - /var/run/docker.sock:/var/run/docker.sock
         - ~/.aws:/root/.aws

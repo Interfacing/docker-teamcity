@@ -1,7 +1,5 @@
 #!/usr/bin/env sh
 
-export TEAMCITY_SERVER="http://teamcity-server:8111"
-
 if [ ! -d "bin" ]; then
     echo "Setting up TeamCity agent for the first time in $(pwd) with Teamcity Server $TEAMCITY_SERVER"
     wget $TEAMCITY_SERVER/update/buildAgent.zip
