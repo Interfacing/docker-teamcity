@@ -14,6 +14,9 @@ RUN apk add --no-cache --virtual .build-deps curl && \
     chmod +x /usr/local/bin/docker-compose && \
     apk del .build-deps
 
+# Install git for agent check-out
+RUN apk add --no-cache git
+
 # Allow automatic ECR login using existing AWS credential
 COPY docker-credential-ecr-login /usr/local/bin/docker-credential-ecr-login
 RUN chmod +x /usr/local/bin/docker-credential-ecr-login
