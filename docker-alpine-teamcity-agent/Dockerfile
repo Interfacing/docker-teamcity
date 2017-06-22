@@ -4,9 +4,6 @@ MAINTAINER François Brulotte <francois.brulotte@gmail.com>
 
 ENV TEAMCITY_AGENT_DIR /opt/agent
 
-# TEAMCITY_SERVER environment variable must be set
-RUN if [ -z "$TEAMCITY_SERVER" ]; then exit 1; fi
-
 # Install latest version of Docker
 RUN echo "@community http://dl-4.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories && \
     apk --update --no-cache add docker@community
