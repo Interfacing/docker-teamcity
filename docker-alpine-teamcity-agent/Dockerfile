@@ -4,6 +4,8 @@ MAINTAINER François Brulotte <francois.brulotte@gmail.com>
 
 ENV TEAMCITY_AGENT_DIR /opt/agent
 
+VOLUME $TEAMCITY_AGENT_DIR/conf
+
 # Install latest version of Docker
 RUN echo "@community http://dl-4.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories && \
     apk --update --no-cache add docker@community

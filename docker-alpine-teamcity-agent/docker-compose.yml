@@ -8,6 +8,7 @@ services:
     ports:
       - 9090:9090
     volumes:
+        - /volumes/buildagent/conf:/opt/agent/conf
         - /var/run/docker.sock:/var/run/docker.sock
         - ~/.aws:/root/.aws
         - ~/.docker:/root/.docker

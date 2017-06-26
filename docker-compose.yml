@@ -22,6 +22,7 @@ services:
     environment:
         - TEAMCITY_SERVER=http://teamcity-server:8111
     volumes:
+        - /volumes/buildagent/conf:/opt/agent/conf
         - /var/run/docker.sock:/var/run/docker.sock
         - ~/.aws:/root/.aws
         - ~/.docker:/root/.docker
