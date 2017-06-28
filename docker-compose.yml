@@ -3,6 +3,7 @@ version: '2'
 services:
   teamcity-db:
     image: postgres:9.4
+    restart: unless-stopped
     environment:
         - POSTGRES_USER=teamcity
         - POSTGRES_PASSWORD=supersecure
@@ -10,6 +11,7 @@ services:
         - /volumes/postgresql/data:/var/lib/postgresql/data
 
   teamcity-server:
+    restart: unless-stopped
     build: docker-alpine-teamcity-server
     ports:
         - 8111:8111
@@ -18,7 +20,7 @@ services:
 
   teamcity-agent:
     build: docker-alpine-teamcity-agent
-    restart: on-failure
+    restart: unless-stopped
     environment:
         - TEAMCITY_SERVER=http://teamcity-server:8111
     volumes:
