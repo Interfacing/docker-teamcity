@@ -11,8 +11,8 @@ services:
         - /volumes/postgresql/data:/var/lib/postgresql/data
 
   teamcity-server:
-    restart: unless-stopped
     build: docker-alpine-teamcity-server
+    restart: unless-stopped
     ports:
         - 8111:8111
     volumes:
