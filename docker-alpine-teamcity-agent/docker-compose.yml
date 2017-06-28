@@ -3,7 +3,7 @@ version: '2'
 services:
   teamcity-agent:
     build: .
-    restart: on-failure
+    restart: unless-stopped
     env_file: teamcity-agent.env
     ports:
       - 9090:9090
