@@ -1,4 +1,4 @@
-FROM frolvlad/alpine-oraclejdk8:8.131.11-cleaned
+FROM frolvlad/alpine-oraclejdk8:8.161.12-cleaned
 
 MAINTAINER François Brulotte <francois.brulotte@gmail.com>
 
@@ -12,7 +12,7 @@ RUN echo "@community http://dl-4.alpinelinux.org/alpine/edge/community" >> /etc/
 
 # Install Docker Compose
 RUN apk add --no-cache --virtual .build-deps curl && \
-    curl -L https://github.com/docker/compose/releases/download/1.13.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose && \
+    curl -L https://github.com/docker/compose/releases/download/1.20.1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose && \
     chmod +x /usr/local/bin/docker-compose && \
     apk del .build-deps
 
