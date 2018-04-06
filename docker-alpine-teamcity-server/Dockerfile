@@ -1,4 +1,4 @@
-FROM frolvlad/alpine-oraclejdk8:8.131.11-cleaned
+FROM frolvlad/alpine-oraclejdk8:8.161.12-cleaned
 
 MAINTAINER François Brulotte <francois.brulotte@gmail.com>
 
@@ -10,7 +10,7 @@ ENV TEAMCITY_DATA_PATH /var/lib/teamcity
 VOLUME $TEAMCITY_DATA_PATH
 
 # Download and install TeamCity to /opt
-ENV TEAMCITY_VERSION 2017.1.5
+ENV TEAMCITY_VERSION 2017.2.3
 ENV TEAMCITY_DOWNLOAD https://download.jetbrains.com/teamcity
 
 RUN mkdir /opt && \
