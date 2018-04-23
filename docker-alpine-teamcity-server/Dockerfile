@@ -13,7 +13,7 @@ VOLUME $TEAMCITY_DATA_PATH
 ENV TEAMCITY_VERSION 2017.2.3
 ENV TEAMCITY_DOWNLOAD https://download.jetbrains.com/teamcity
 
-RUN mkdir /opt && \
+RUN mkdir -p /opt && \
     apk add --no-cache --virtual .bootstrap-deps wget ca-certificates && \
     wget -O- $TEAMCITY_DOWNLOAD/TeamCity-$TEAMCITY_VERSION.tar.gz | tar xz -C /opt && \
     rm -f  /opt/TeamCity/webapps/ROOT/WEB-INF/plugins/clearcase.zip && \
