@@ -1,4 +1,4 @@
-FROM frolvlad/alpine-oraclejdk8:8.161.12-cleaned
+FROM anapsix/alpine-java:8u172b11_jdk
 
 MAINTAINER François Brulotte <francois.brulotte@gmail.com>
 
